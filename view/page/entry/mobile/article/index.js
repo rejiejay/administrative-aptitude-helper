@@ -1,16 +1,19 @@
-export default class Article extends React.Component {
+export class Article extends React.Component {
     constructor(props) {
         super(props)
         this.state = {}
     }
 
-    searchHandle = () => { }
-
-    clearSearch = () => { }
+    confirmHandle = () => {
+        const { resolve } = this.props;
+        resolve();
+    }
 
     render() {
         return (
-            <div className="article">article</div>
+            <div className="article"
+                onClick={this.confirmHandle}
+            >article</div>
         )
     }
 }

@@ -4,13 +4,16 @@ export default class Examination extends React.Component {
         this.state = {}
     }
 
-    searchHandle = () => { }
-
-    clearSearch = () => { }
+    confirmHandle = () => {
+        const { resolve } = this.props;
+        resolve();
+    }
 
     render() {
         return (
-            <div className="examination">examination</div>
+            <div className="examination"
+                onClick={this.confirmHandle}
+            >examination</div>
         )
     }
 }
