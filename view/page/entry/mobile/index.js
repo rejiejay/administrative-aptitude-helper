@@ -1,4 +1,5 @@
 import Header from './components/header'
+import List from './components/list'
 
 export class MobileComponent extends React.Component {
     constructor(props) {
@@ -9,6 +10,7 @@ export class MobileComponent extends React.Component {
     render() {
         return <>
             <Header />
+            <List />
         </>
     }
 }
