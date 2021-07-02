@@ -1,0 +1,47 @@
+{
+  "name": "administrative-aptitude-helper",
+  "version": "1.0.0",
+  "description": "Administrative Aptitude Helper",
+  "main": "development.js",
+  "author": {
+    "name": "re-jeker-clear"
+  },
+  "scripts": {
+    "dev": "SET NODE_ENV=development&& babel-node -- ./development.js",
+    "dev-mac": "export NODE_ENV=development&& babel-node -- ./development.js",
+    "test": "SET NODE_ENV=development&& babel-node -- ./tester.js",
+    "build": "SET NODE_ENV=production&& babel-node -- ./build-web-production.js",
+    "pro-start": "export NODE_ENV=production&& babel-node -- ./production.js",
+    "pro": "export NODE_ENV=production&& pm2 start babel-node -- ./production.js"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "cos-nodejs-sdk-v5": "^2.9.10",
+    "fs-extra": "^9.0.1",
+    "node-schedule": "^2.0.0",
+    "qcloud-cos-sts": "^3.0.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "request": "^2.88.2",
+    "signale": "^1.4.0",
+    "sql.js": "^1.4.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/node": "^7.10.4",
+    "@babel/plugin-syntax-optional-chaining": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/register": "^7.10.4",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "6.26.0",
+    "less": "^4.1.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.41.5"
+  }
+}

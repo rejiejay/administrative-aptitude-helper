@@ -1,0 +1,199 @@
+.flex-start,
+.flex-start-top,
+.flex-start-center,
+.flex-start-bottom,
+.flex-column,
+.flex-column-center,
+.flex-center {
+    display  : -webkit-box;
+    /* 老版本语法 : Safari, iOS, Android browser, older WebKit browsers. */
+    display  : -moz-box;
+    /* 老版本语法 : Firefox (buggy) */
+    display  : -ms-flexbox;
+    /* 混合版本语法: IE 10 */
+    display  : -webkit-flex;
+    /* 新版本语法 : Chrome 21+ */
+    display  : flex;
+    /* 新版本语法 : Opera 12.1, Firefox 22+ */
+}
+
+// 主轴水平向右 顶部对齐
+.flex-start {
+    justify-content: flex-start;
+    align-items    : flex-start;
+}
+
+// 主轴水平向右 顶部对齐
+.flex-start-top {
+    justify-content: flex-start;
+    align-items    : flex-start;
+}
+
+// 主轴水平向右 居中
+.flex-start-center {
+    justify-content: flex-start;
+    align-items    : center;
+}
+
+// 主轴水平向右 底部对齐
+.flex-start-bottom {
+    justify-content: flex-start;
+    align-items    : flex-end;
+}
+
+// 主轴水平向下 主轴水平向左边对齐
+.flex-column {
+    flex-direction: column;
+    align-items   : flex-start;
+}
+
+// 主轴水平向下 居中对齐
+.flex-column-center {
+    flex-direction: column;
+    align-items   : center;
+}
+
+// 居中对齐
+.flex-center {
+    justify-content: center;
+    align-items    : center;
+}
+
+// 占满剩余部分
+.flex-rest {
+    -prefix-box-flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex    : 1;
+    -moz-box-flex   : 1;
+    -ms-flex        : 1;
+    flex            : 1;
+}
+
+.df,
+.frn,
+.frw,
+.frrn,
+.frrw,
+.fcn,
+.fcw,
+.fcrn,
+.frwr {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.dfi {
+    display: inline-flex;
+}
+
+.frn {
+    flex-flow: row nowrap;
+}
+
+.frw {
+    flex-flow: row wrap;
+}
+
+.frrn {
+    flex-flow: row-reverse nowrap;
+}
+
+.frrw {
+    flex-flow: row-reverse wrap;
+}
+
+.fcn {
+    flex-flow: column nowrap;
+}
+
+.fcw {
+    flex-flow: column wrap;
+}
+
+.fcrn {
+    flex-flow: column-reverse nowrap;
+}
+
+.fcrw {
+    flex-flow: column-reverse wrap;
+}
+
+/** micro-adjustment */
+.aie {
+    align-items: flex-end;
+}
+
+.ais {
+    align-items: flex-start;
+}
+
+.aist {
+    align-items: stretch;
+}
+
+.aic {
+    align-items: center;
+}
+
+.jcc {
+    justify-content: center;
+}
+
+.jce {
+    justify-content: flex-end;
+}
+
+.jcs {
+    justify-content: flex-start;
+}
+
+.jcb {
+    justify-content: space-between;
+}
+
+.jca {
+    justify-content: space-around;
+}
+
+.jcse {
+    justify-content: space-evenly;
+}
+
+.jcst {
+    justify-content: stretch;
+}
+
+.acs {
+    align-content: flex-start;
+}
+
+.ace {
+    align-content: flex-end;
+}
+
+.acc {
+    align-content: center;
+}
+
+.acb {
+    align-content: space-between;
+}
+
+.aca {
+    align-content: space-around;
+}
+
+.acst {
+    align-content: stretch;
+}
+
+.asc {
+    align-self: center;
+}
+
+.ase {
+    align-self: flex-end;
+}
