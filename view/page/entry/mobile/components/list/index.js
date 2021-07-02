@@ -1,5 +1,7 @@
 import RenderHelper from './../../../../../utils/render-helper'
 
+import Header from './../header'
+
 export default class List extends React.Component {
     constructor(props) {
         super(props)
@@ -16,11 +18,21 @@ export default class List extends React.Component {
     render() {
         const { clientHeight } = this
         const minItemHeight = clientHeight - 147
+        const { onClickHandle } = this.props;
+        const id = 1
 
         return (
             <div className="mobile-device-list">
+                <Header />
+
                 <div className="list-item">
-                    <div className="list-item-container" style={{ minHeight: `${minItemHeight}px` }} >
+                    <div
+                        className="list-item-container"
+                        style={{
+                            minHeight: `${minItemHeight}px`
+                        }}
+                        onClick={() => onClickHandle(id)}
+                    >
                         <div className="list-item-title">title</div>
                         <div className="list-item-content">{RenderHelper.htmlStringToParagraph('content')}</div>
                     </div>

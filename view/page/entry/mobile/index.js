@@ -1,4 +1,3 @@
-import Header from './components/header'
 import List from './components/list'
 
 export class MobileComponent extends React.Component {
@@ -7,10 +6,15 @@ export class MobileComponent extends React.Component {
         this.state = {}
     }
 
+    onClickHandle = id => {
+        console.log(id);
+    }
+
     render() {
         return <>
-            <Header />
-            <List />
+            <List
+                onClickHandle={this.onClickHandle}
+            />
         </>
     }
 }
