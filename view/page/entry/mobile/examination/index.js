@@ -4,6 +4,23 @@ export default class Examination extends React.Component {
         this.state = {}
     }
 
+    componentDidMount() {
+        window.addEventListener("hashchange", this.initLoadPageHash);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("hashchange", this.initLoadPageHash);
+    }
+
+    initLoadPageHash = () => {
+        const examinationId = loadPageHashVar('examination');
+        const { reject } = this.props;
+
+        if (!examinationId) {
+            reject();
+        }
+    }
+
     confirmHandle = () => {
         const { resolve } = this.props;
         resolve();

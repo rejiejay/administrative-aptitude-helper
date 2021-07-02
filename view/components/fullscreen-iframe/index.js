@@ -17,6 +17,7 @@ class FullscreenIframe {
 
     destroy = () => {
         document.body.removeChild(this.div);
+        ReactDOM.unmountComponentAtNode(this.div);
     }
 
     show() {

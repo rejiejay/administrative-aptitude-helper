@@ -25,8 +25,9 @@ export default class List extends React.Component {
             <div className="mobile-device-list">
                 <Header />
 
-                <div className="list-item">
+                {new Array(5).fill('').map((i, k) => (<div className="list-item">
                     <div
+                        key={k}
                         className="list-item-container"
                         style={{
                             minHeight: `${minItemHeight}px`
@@ -36,7 +37,9 @@ export default class List extends React.Component {
                         <div className="list-item-title">title</div>
                         <div className="list-item-content">{RenderHelper.htmlStringToParagraph('content')}</div>
                     </div>
+
                 </div>
+                ))}
 
                 <div className="mobile-load">
                     <div className="mobile-load-container flex-center">加载更多 (0/0)</div>

@@ -1,5 +1,6 @@
 import FullscreenIframe from './../../../components/fullscreen-iframe';
 import toast from './../../../components/toast';
+import { loadPageHashVar, addQueryToPageHash } from './../../../utils/url-helper';
 
 import List from './list'
 
@@ -9,10 +10,25 @@ export class MobileComponent extends React.Component {
         this.state = {}
     }
 
+    componentDidMount() {
+        window.addEventListener("hashchange", this.initLoadPageHash);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("hashchange", this.initLoadPageHash);
+    }
+
+    initLoadPageHash = () => {
+        const articleId = loadPageHashVar('article');
+        const examinationId = loadPageHashVar('examination');
+
+        if (articleId) this.showArticleHandle(articleId)
+        if (examinationId) this.showArticleHandle(examinationId)
+    }
+
     onClickItemHandle = id => {
-        console.log(id);
-        this.showArticleHandle(id)
-        this.showExaminationHandle(id)
+        window.location.hash = addQueryToPageHash({ article: id });
+        // window.location.hash = addQueryToPageHash({ examination: id });
     }
 
     showArticleHandle = id => {
@@ -44,10 +60,8 @@ export class MobileComponent extends React.Component {
     }
 
     render() {
-        return <>
-            <List
-                onClickHandle={this.onClickItemHandle}
-            />
-        </>
+        return <List
+            onClickHandle={this.onClickItemHandle}
+        />
     }
 }
