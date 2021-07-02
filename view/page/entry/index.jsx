@@ -1,7 +1,7 @@
 import deviceHandle from './../../utils/device-handle'
 
 window.onload = () => {
-    const root = document.getElementById('jeker-task-assist-system');
+    const root = document.getElementById('administrative-aptitude-helper');
 
     if (deviceHandle.isMobile()) {
         return import('./mobile/index.js')

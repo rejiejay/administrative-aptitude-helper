@@ -1,3 +1,5 @@
+import Header from './components/header'
+
 export class MobileComponent extends React.Component {
     constructor(props) {
         super(props)
@@ -5,6 +7,8 @@ export class MobileComponent extends React.Component {
     }
 
     render() {
-        return <div>Mobile</div>
+        return <>
+            <Header />
+        </>
     }
 }
