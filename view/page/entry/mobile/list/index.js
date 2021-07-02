@@ -1,6 +1,6 @@
-import RenderHelper from './../../../../../utils/render-helper'
+import RenderHelper from './../../../../utils/render-helper'
 
-import Header from './../header'
+import Header from './header'
 
 export default class List extends React.Component {
     constructor(props) {
