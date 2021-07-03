@@ -1,6 +1,8 @@
 import { loadPageHashVar } from './../../../../utils/url-helper';
 import CommonlyInputText from './../../../../components/mobile/commonly-input-text'
 import CommonlyBottomOperate from './../../../../components/mobile/commonly-bottom-operate'
+import FullscreenIframe from './../../../../components/fullscreen-iframe';
+import toast from './../../../../components/toast';
 
 export class Examination extends React.Component {
     constructor(props) {
@@ -8,6 +10,7 @@ export class Examination extends React.Component {
         this.state = {
             title: '',
             content: '',
+            src: '',
             related: new Array(3).fill(''),
         }
     }
@@ -43,8 +46,19 @@ export class Examination extends React.Component {
 
     deleteHandle = () => { }
 
+    showImage = () => {
+        const { src } = this.state;
+        toast.show()
+        import('./image-model/index.js').then(async ({ ImageModel }) => {
+            toast.destroy()
+
+            const imageModel = new FullscreenIframe(ImageModel, { src });
+            await imageModel.show();
+        })
+    }
+
     render() {
-        const { title, content, related } = this.state;
+        const { title, content, related, src } = this.state;
 
         return (
             <div className="examination">
@@ -70,7 +84,8 @@ export class Examination extends React.Component {
 
                 <div className="examination-question">
                     <img
-                        src="/lib/tester.png"
+                        onClick={this.showImage}
+                        src={src}
                         alt="examination-question"
                     />
                 </div>
