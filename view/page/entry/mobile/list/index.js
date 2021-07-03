@@ -1,4 +1,6 @@
 import RenderHelper from './../../../../utils/render-helper'
+import FullscreenIframe from './../../../../components/fullscreen-iframe';
+import toast from './../../../../components/toast';
 
 import Header from './header'
 
@@ -15,6 +17,20 @@ export default class List extends React.Component {
 
     clearSearch = () => { }
 
+    showCategoryMindHandle = () => {
+        toast.show()
+        import('./../category-mind').then(async ({ CategoryMind }) => {
+            toast.destroy()
+
+            const categoryMind = new FullscreenIframe(CategoryMind);
+            const result = await categoryMind.show();
+
+            if (result instanceof Error) return
+
+            console.log('result', result)
+        })
+    }
+
     render() {
         const { clientHeight } = this
         const minItemHeight = clientHeight - 147
@@ -23,7 +39,9 @@ export default class List extends React.Component {
 
         return (
             <div className="mobile-device-list">
-                <Header />
+                <Header
+                    showCategoryMindHandle={this.showCategoryMindHandle}
+                />
 
                 {new Array(5).fill('').map((i, k) => (<div className="list-item">
                     <div

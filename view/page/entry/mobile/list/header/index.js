@@ -12,12 +12,15 @@ export default class Header extends React.Component {
 
     render() {
         const { search } = this.state;
+        const { showCategoryMindHandle } = this.props;
 
         return (
             <div className="mobile-device-header noselect">
                 <div className="header-filter flex-start">
                     <div className="header-filter-des flex-rest flex-start-center">
-                        <div className="header-filter-des flex-rest flex-center">分类</div>
+                        <div className="header-filter-des flex-rest flex-center"
+                            onClick={showCategoryMindHandle}
+                        >分类</div>
                     </div>
                     <div className="header-filter-separation"></div>
                     <div className="header-filter-des flex-rest flex-start-center">
