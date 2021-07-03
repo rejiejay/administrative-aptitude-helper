@@ -28,12 +28,12 @@ export class MobileComponent extends React.Component {
         const examinationId = loadPageHashVar('examination');
 
         if (articleId) this.showArticleHandle(articleId)
-        if (examinationId) this.showArticleHandle(examinationId)
+        if (examinationId) this.showExaminationHandle(examinationId)
     }
 
-    onClickItemHandle = id => {
-        window.location.hash = addQueryToPageHash({ article: id });
-        // window.location.hash = addQueryToPageHash({ examination: id });
+    onClickItemHandle = (id, type = 'examination') => {
+        if (type === 'article') return window.location.hash = addQueryToPageHash({ article: id });
+        if (type === 'examination') return window.location.hash = addQueryToPageHash({ examination: id });
     }
 
     showArticleHandle = id => {
