@@ -46,6 +46,7 @@ export class MobileComponent extends React.Component {
 
             if (result instanceof Error) return
             this.isShowModal = false
+            window.location.hash = ''
 
             console.log('result', result)
         })
@@ -62,6 +63,7 @@ export class MobileComponent extends React.Component {
 
             if (result instanceof Error) return
             this.isShowModal = false
+            window.location.hash = ''
 
             console.log('result', result)
         })
