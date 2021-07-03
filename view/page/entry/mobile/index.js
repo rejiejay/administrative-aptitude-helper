@@ -13,6 +13,7 @@ export class MobileComponent extends React.Component {
     }
 
     componentDidMount() {
+        this.initLoadPageHash();
         window.addEventListener("hashchange", this.initLoadPageHash);
     }
 
@@ -43,10 +44,10 @@ export class MobileComponent extends React.Component {
 
             const article = new FullscreenIframe(Article, { id });
             const result = await article.show();
+            this.isShowModal = false
+            window.history.back();
 
             if (result instanceof Error) return
-            this.isShowModal = false
-            window.location.hash = ''
 
             console.log('result', result)
         })
