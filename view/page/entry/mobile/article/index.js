@@ -2,6 +2,8 @@ import { loadPageHashVar } from './../../../../utils/url-helper';
 import CommonlyInputText from './../../../../components/mobile/commonly-input-text'
 import CommonlyBottomOperate from './../../../../components/mobile/commonly-bottom-operate'
 
+import Preview from './preview'
+
 export class Article extends React.Component {
     constructor(props) {
         super(props)
@@ -9,6 +11,7 @@ export class Article extends React.Component {
             title: '',
             content: '',
             related: new Array(3).fill(''),
+            isPreview: true,
         }
     }
 
@@ -44,7 +47,9 @@ export class Article extends React.Component {
     deleteHandle = () => { }
 
     render() {
-        const { title, content, related } = this.state;
+        const { title, content, related, isPreview } = this.state;
+
+        if (isPreview) return <Preview />
 
         return (
             <div className="article">

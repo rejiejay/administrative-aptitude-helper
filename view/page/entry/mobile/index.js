@@ -24,16 +24,19 @@ export class MobileComponent extends React.Component {
     initLoadPageHash = () => {
         if (this.isShowModal) return
 
+        const pageType = loadPageHashVar('page');
         const articleId = loadPageHashVar('article');
         const examinationId = loadPageHashVar('examination');
 
-        if (articleId) this.showArticleHandle(articleId)
-        if (examinationId) this.showExaminationHandle(examinationId)
+        if (pageType === 'article' || pageType === 'article') {
+            if (articleId) this.showArticleHandle(articleId)
+            if (examinationId) this.showExaminationHandle(examinationId)
+        }
     }
 
-    onClickItemHandle = (id, type = 'examination') => {
-        if (type === 'article') return window.location.hash = addQueryToPageHash({ article: id });
-        if (type === 'examination') return window.location.hash = addQueryToPageHash({ examination: id });
+    onClickItemHandle = (id, page = 'article') => {
+        if (page === 'article') return window.location.hash = addQueryToPageHash({ page, article: id });
+        if (page === 'examination') return window.location.hash = addQueryToPageHash({ page, examination: id });
     }
 
     showArticleHandle = id => {

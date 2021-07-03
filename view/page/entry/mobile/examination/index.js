@@ -49,7 +49,7 @@ export class Examination extends React.Component {
     showImage = () => {
         const { src } = this.state;
         toast.show()
-        import('./image-model/index.js').then(async ({ ImageModel }) => {
+        import('./image-model.js').then(async ({ ImageModel }) => {
             toast.destroy()
 
             const imageModel = new FullscreenIframe(ImageModel, { src });
@@ -82,13 +82,13 @@ export class Examination extends React.Component {
                     />
                 </div>
 
-                <div className="examination-question">
+                {src && <div className="examination-question">
                     <img
                         onClick={this.showImage}
                         src={src}
                         alt="examination-question"
                     />
-                </div>
+                </div>}
 
                 <div className="examination-linked">
                     {related.map((i, k) => (
