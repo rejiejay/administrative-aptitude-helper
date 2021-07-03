@@ -1,6 +1,23 @@
 import jsxStyle from './../jsx-style/index'
 
-const content = 'position: fixed; width: 100%; height: 100%; top: 0px; left: 0px; z-index: 99; display: flex; -webkit-box-pack: center; justify-content: center; -webkit-box-align: center; align-items: center;'
+const content = (zIndex = 99) => `
+    position        : fixed;
+    width           : 100%;
+    height          : 100%;
+    top             : 0px;
+    left            : 0px;
+    z-index         : ${zIndex};
+    background-color: #fff;
+
+    display  : -webkit-box;
+    display  : -moz-box;
+    display  : -ms-flexbox;
+    display  : -webkit-flex;
+    display  : flex;
+
+    flex-direction: column;
+    align-items   : center;
+`
 
 const mask = {
     position: 'absolute',

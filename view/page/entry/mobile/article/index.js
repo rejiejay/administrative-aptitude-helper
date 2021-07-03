@@ -2,6 +2,7 @@ import { loadPageHashVar } from './../../../../utils/url-helper';
 import CommonlyInputText from './../../../../components/mobile/commonly-input-text'
 import CommonlyBottomOperate from './../../../../components/mobile/commonly-bottom-operate'
 import Button from './../../../../components/button'
+import Confirm from './../../../../components/confirm'
 
 import Preview from './preview'
 
@@ -24,10 +25,16 @@ export class Article extends React.Component {
         window.removeEventListener("hashchange", this.initLoadPageHash);
     }
 
-    initLoadPageHash = () => {
+    initLoadPageHash = async () => {
         const articleId = loadPageHashVar('article');
         const { reject } = this.props;
+        const isDiff = false;
 
+        if (!articleId && isDiff) {
+            const confirm = new Confirm('你有消息未保存, 是否返回上一页?')
+            const confirmInstance = await confirm.show()
+            if (confirmInstance instanceof Error) return window.history.forward();
+        }
         if (!articleId) {
             reject();
         }
