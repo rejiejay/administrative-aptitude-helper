@@ -1,6 +1,7 @@
 import { loadPageHashVar } from './../../../../utils/url-helper';
 import CommonlyInputText from './../../../../components/mobile/commonly-input-text'
 import CommonlyBottomOperate from './../../../../components/mobile/commonly-bottom-operate'
+import Button from './../../../../components/button'
 
 import Preview from './preview'
 
@@ -8,8 +9,8 @@ export class Article extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            title: '',
-            content: '',
+            title: '标题',
+            content: '内容内容',
             related: new Array(3).fill(''),
             isPreview: true,
         }
@@ -42,14 +43,27 @@ export class Article extends React.Component {
         resolve();
     }
 
-    editHandle = () => { }
+    editHandle = () => {
+        this.setState({ isPreview: true })
+    }
 
     deleteHandle = () => { }
+
+    bottomOperateFilter = element => {
+        return true
+    }
 
     render() {
         const { title, content, related, isPreview } = this.state;
 
-        if (isPreview) return <Preview />
+        if (isPreview) return <Preview
+            title={title}
+            content={content}
+            related={related}
+            editHandle={() => this.setState({ isPreview: false })}
+            deleteHandle={this.deleteHandle}
+            cancelHandle={this.cancelHandle}
+        />
 
         return (
             <div className="article">
@@ -68,17 +82,20 @@ export class Article extends React.Component {
                         onChangeHandle={value => this.setState({ content: value })}
                         isMultipleInput
                         isAutoHeight
-                        minHeight={250}
+                        minHeight={320}
                         placeholder='文章内容'
                     />
                 </div>
 
                 <div className="article-linked">
+                    <div className="article-linked-item article-linked-add">
+                        <Button key='article-linked-add'>新增关联</Button>
+                    </div>
                     {related.map((i, k) => (
                         <div className="article-linked-item" key={k}>
                             <div className="linked-item-container flex-start-center">
                                 <div className="linked-item-descript flex-rest">关联标题</div>
-                                <div className="linked-item-preview flex-center">预览</div>
+                                <div className="linked-item-preview flex-center">删除</div>
                             </div>
                         </div>
                     ))}
@@ -89,12 +106,12 @@ export class Article extends React.Component {
                     leftElement={[{
                         key: 'edit',
                         cilckHandle: this.editHandle,
-                        element: '编辑'
+                        element: '暂存'
                     }, {
                         key: 'delete',
                         cilckHandle: this.deleteHandle,
                         element: '删除'
-                    }]}
+                    }].filter(this.bottomOperateFilter)}
                     rightElement={[{
                         cilckHandle: this.cancelHandle,
                         element: '返回'
